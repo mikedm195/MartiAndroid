@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Guacamole</string>
+    <string name="heightText">Alura</string>
+    <string name="weightText">Peso</string>
+    <string name="genderText">Genero</string>
+    <string name="addProductTitle">Add Product</string>
+    <string name="app_name">Martí </string>
     <string name="SignupTitle">Registro</string>
     <string name="emailText">Email</string>
     <string name="passwordText">Contraseña</string>

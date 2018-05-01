@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         progress_bar.setCancelable(false);
         progress_bar.show();
 
-        StringRequest loginReq = new StringRequest(Request.Method.GET, "http://192.168.15.58:3000/api/user/auth?email=mike@gmail.com&password=1234",
+        StringRequest loginReq = new StringRequest(Request.Method.GET, "http://"+LOGIN_API+"?email="+emailTxt.getText()+"&password="+passwordTxt.getText(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

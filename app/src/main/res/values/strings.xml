@@ -1,5 +1,15 @@
 <resources>
-    <string name="app_name">Guacamole</string>
+    <string name="pNameText">Product Name</string>
+    <string name="idText">ID del producto</string>
+    <string name="photoText">Photo</string>
+    <string name="videoText">Video</string>
+    <string name="categoryText">Category</string>
+    <string name="colorText">Color</string>
+    <string name="priceText">Price</string>
+    <string name="ageText">Age</string>
+    <string name="addProductButton">Add Product</string>
+    <string name="addProductTitle">Add Product</string>
+    <string name="app_name">Martí </string>
     <string name="SignupTitle">Signup</string>
     <string name="emailText">Email</string>
     <string name="passwordText">Password</string>
@@ -7,6 +17,9 @@
     <string name="lastnameText">Last name</string>
     <string name="addressText">Address</string>
     <string name="postalcodeText">Postal Code</string>
+    <string name="heightText">Height</string>
+    <string name="weightText">Weight</string>
+    <string name="genderText">Gender</string>
     <string name="stateText">State</string>
     <string name="signupButton">Signup</string>
     <string name="loginButton">Have an account?</string>

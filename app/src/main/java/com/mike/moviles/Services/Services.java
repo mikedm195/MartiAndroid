@@ -5,7 +5,7 @@ package com.mike.moviles.Services;
  */
 
 public class Services {
-    public static final String LOGIN_API = "http://ubiquitous.csf.itesm.mx/~pddm-1021150/content/api_pf/login.php";
+    public static final String LOGIN_API = "192.168.15.58:3000/api/user/auth";
     public static final String SIGNUP_API = "http://ubiquitous.csf.itesm.mx/~pddm-1021150/content/api_pf/signup.php";
     public static final String PRODUCTS_API = "http://ubiquitous.csf.itesm.mx/~pddm-1021150/content/api_pf/products.php";
     public static final String PRODUCT_DELETE_API = "http://ubiquitous.csf.itesm.mx/~pddm-1021150/content/api_pf/product_delete.php";

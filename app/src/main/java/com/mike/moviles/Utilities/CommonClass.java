@@ -7,15 +7,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mike.moviles.Activities.LoginActivity;
+import com.mike.moviles.Activities.SignupActivity;
 import com.mike.moviles.Fragments.User.Admin.AddInventoryAdminFragment;
 import com.mike.moviles.Fragments.User.Admin.AddProductAdminFragment;
 import com.mike.moviles.Fragments.User.All.ShoppingCartFragment;
 import com.mike.moviles.Objects.ShoppingCart;
 import com.mike.moviles.R;
-
-/**
- * Created by Herce on 01/05/2017.
- */
 
 public class CommonClass {
 
@@ -53,6 +50,8 @@ public class CommonClass {
                 transaction.addToBackStack(null);
                 transaction.commit();
                 break;
+
+
         }
         return true;
     }
