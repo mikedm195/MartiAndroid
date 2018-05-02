@@ -52,13 +52,6 @@ public class newUser extends AppCompatActivity {
         heightText = (EditText)findViewById(R.id.heightTextField);
         weightText = (EditText)findViewById(R.id.weightTextField);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent actividad = new Intent(newUser.this, LoginActivity.class);
-                startActivity(actividad);
-            }
-        });
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,22 +80,15 @@ public class newUser extends AppCompatActivity {
                         progress_bar.cancel();
                         try {
                             JSONObject res = new JSONObject(response);
-                            if(res.getString("code").equals("01"))
+                            if(res.getString("user_id").equals("-1"))
                             {
+                                Toast.makeText(newUser.this, R.string.queryErrorText , Toast.LENGTH_SHORT).show();
+
+
+                            } else {
                                 Toast.makeText(newUser.this, R.string.signedupText , Toast.LENGTH_SHORT).show();
                                 Intent actividad = new Intent(newUser.this, LoginActivity.class);
                                 startActivity(actividad);
-                            } else if (res.getString("code").equals("02"))
-                            {
-                                Toast.makeText(newUser.this, R.string.missingValuesText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("03"))
-                            {
-                                Toast.makeText(newUser.this, R.string.userTakenText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("04"))
-                            {
-                                Toast.makeText(newUser.this, R.string.queryErrorText , Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(newUser.this, R.string.unknownResponseText , Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             Toast.makeText(newUser.this, "Error! " + e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();

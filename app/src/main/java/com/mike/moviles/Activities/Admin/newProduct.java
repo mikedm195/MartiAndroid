@@ -25,6 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.mike.moviles.Services.Services.PRODUCTS_API;
 import static com.mike.moviles.Services.Services.SIGNUP_API;
 
 public class newProduct extends AppCompatActivity {
@@ -51,45 +52,30 @@ public class newProduct extends AppCompatActivity {
         priceText = (EditText)findViewById(R.id.PriceTextField);
         ageText = (EditText)findViewById(R.id.AgeTextField);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent actividad = new Intent(newProduct.this, LoginActivity.class);
-                startActivity(actividad);
-            }
-        });
     }
 
     private void signup()
     {
         final ProgressDialog progress_bar = new ProgressDialog(newProduct.this);
-        progress_bar.setMessage(newProduct.this.getString(R.string.signingupText));
+        progress_bar.setMessage(newProduct.this.getString(R.string.uploadingProductText));
         progress_bar.setCancelable(false);
         progress_bar.show();
 
-        StringRequest signupReq = new StringRequest(Request.Method.POST, SIGNUP_API,
+        StringRequest signupReq = new StringRequest(Request.Method.POST, PRODUCTS_API,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progress_bar.cancel();
                         try {
                             JSONObject res = new JSONObject(response);
-                            if(res.getString("code").equals("01"))
-                            {
-                                Toast.makeText(newProduct.this, R.string.signedupText , Toast.LENGTH_SHORT).show();
-                                Intent actividad = new Intent(newProduct.this, LoginActivity.class);
-                                startActivity(actividad);
-                            } else if (res.getString("code").equals("02"))
-                            {
-                                Toast.makeText(newProduct.this, R.string.missingValuesText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("03"))
-                            {
-                                Toast.makeText(newProduct.this, R.string.userTakenText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("04"))
+                            if(res.getString("product_id").equals("-1"))
                             {
                                 Toast.makeText(newProduct.this, R.string.queryErrorText , Toast.LENGTH_SHORT).show();
+
                             } else {
-                                Toast.makeText(newProduct.this, R.string.unknownResponseText , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(newProduct.this, R.string.uploadedProductText , Toast.LENGTH_SHORT).show();
+                                Intent actividad = new Intent(newProduct.this, LoginActivity.class);
+                                startActivity(actividad);
                             }
                         } catch (JSONException e) {
                             Toast.makeText(newProduct.this, "Error! " + e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
@@ -107,14 +93,14 @@ public class newProduct extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("Name",nameTxt.getText().toString());
-                params.put("Product ID",idTxt.getText().toString());
-                params.put("Photo",photoTxt.getText().toString());
-                params.put("Video",videoTxt.getText().toString());
-                params.put("Category",categoryTxt.getText().toString());
-                params.put("Color",colorTxt.getText().toString());
-                params.put("Price",priceText.getText().toString());
-                params.put("Age",ageText.getText().toString());
+                params.put("name",nameTxt.getText().toString());
+                params.put("product_id",idTxt.getText().toString());
+                params.put("photo",photoTxt.getText().toString());
+                params.put("video",videoTxt.getText().toString());
+                params.put("category_id",categoryTxt.getText().toString());
+                params.put("color",colorTxt.getText().toString());
+                params.put("price",priceText.getText().toString());
+                params.put("age",ageText.getText().toString());
 
                 return params;
             }

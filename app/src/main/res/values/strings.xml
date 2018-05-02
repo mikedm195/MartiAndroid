@@ -1,5 +1,7 @@
 <resources>
     <string name="pNameText">Product Name</string>
+    <string name="uploadingProductText">Uploading Product....</string>
+    <string name="uploadedProductText">Product Uploaded </string>
     <string name="idText">ID del producto</string>
     <string name="photoText">Photo</string>
     <string name="videoText">Video</string>
