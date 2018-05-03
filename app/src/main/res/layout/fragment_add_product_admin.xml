@@ -28,19 +28,19 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/brandProdAdminAddField"
+                android:id="@+id/PhotoTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Brand"
+                android:hint="Photo"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/descriptionProdAdminAddField"
+                android:id="@+id/VideoTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Description"
+                android:hint="Video"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -52,20 +52,27 @@
                 android:inputType="numberDecimal" />
 
             <EditText
-                android:id="@+id/imageurlProdAdminAddField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Image URL"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/categoryProdAdminAddField"
+                android:id="@+id/CategoryTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Category"
                 android:inputType="number" />
+
+            <EditText
+                android:id="@+id/ColoroTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Color"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/AgeTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="textPersonName" />
 
             <Space
                 android:layout_width="match_parent"

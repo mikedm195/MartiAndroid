@@ -79,21 +79,30 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/cpTextField"
+            android:id="@+id/heightTextField"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/postalcodeText"
+            android:hint="@string/heightText"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/stateTextField"
+            android:id="@+id/weightTextField"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/weightText"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/genderTextField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/stateText"
+            android:hint="@string/genderText"
             android:inputType="textPersonName" />
+
     </LinearLayout>
 
     <EditText
@@ -140,12 +149,6 @@
             android:layout_weight="1"
             android:text="@string/signupButton" />
 
-        <Button
-            android:id="@+id/loginButtonSignup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/loginButton" />
 
     </LinearLayout>
 </LinearLayout>

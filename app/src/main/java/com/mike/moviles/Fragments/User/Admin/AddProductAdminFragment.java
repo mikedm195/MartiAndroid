@@ -32,7 +32,7 @@ import static com.mike.moviles.Services.Services.PRODUCTS_API;
 
 public class AddProductAdminFragment extends Fragment {
 
-    private EditText nameTxt, brandTxt, descriptionTxt, priceTxt, categoryTxt, imageURLTxt;
+    private EditText nameTxt, idTxt, photoTxt, videoTxt, categoryTxt, colorTxt, priceText, ageText;
     private Button addBtn;
     ProgressDialog progress_bar;
 
@@ -51,12 +51,14 @@ public class AddProductAdminFragment extends Fragment {
         progress_bar.setMessage(getContext().getString(R.string.loadingDataText));
         progress_bar.setCancelable(false);
 
-        nameTxt = (EditText) view.findViewById(R.id.nameProdAdminAddField);
-        brandTxt = (EditText) view.findViewById(R.id.brandProdAdminAddField);
-        descriptionTxt = (EditText) view.findViewById(R.id.descriptionProdAdminAddField);
-        priceTxt = (EditText) view.findViewById(R.id.priceProdAdminAddField);
-        categoryTxt = (EditText) view.findViewById(R.id.categoryProdAdminAddField);
-        imageURLTxt = (EditText) view.findViewById(R.id.imageurlProdAdminAddField);
+
+        nameTxt = (EditText)view.findViewById(R.id.nameProdAdminAddField);
+        photoTxt = (EditText)view.findViewById(R.id.PhotoTextField);
+        videoTxt = (EditText)view.findViewById(R.id.VideoTextField);
+        categoryTxt = (EditText)view.findViewById(R.id.CategoryTextField);
+        colorTxt = (EditText)view.findViewById(R.id.ColoroTextField);
+        priceText = (EditText)view.findViewById(R.id.priceProdAdminAddField);
+        ageText = (EditText)view.findViewById(R.id.AgeTextField);
 
         addBtn = (Button) view.findViewById(R.id.addProdAdminAddButton);
 
@@ -100,8 +102,11 @@ public class AddProductAdminFragment extends Fragment {
                         progress_bar.cancel();
                         try {
                             JSONObject res = new JSONObject(response);
-                            if(res.getString("code").equals("01"))
+                            if(res.getString("product_id").equals("-1"))
                             {
+                                Toast.makeText(getContext(), R.string.queryErrorText , Toast.LENGTH_SHORT).show();
+
+                            } else {
                                 Toast.makeText(getContext(), "Product Inserted" , Toast.LENGTH_SHORT).show();
 
                                 Fragment newFragment = new ProductsFragment();
@@ -109,15 +114,6 @@ public class AddProductAdminFragment extends Fragment {
                                 transaction.replace(R.id.frame_layout_admin, newFragment);
                                 transaction.addToBackStack(null);
                                 transaction.commit();
-
-                            } else if (res.getString("code").equals("02"))
-                            {
-                                Toast.makeText(getContext(), R.string.missingValuesText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("04"))
-                            {
-                                Toast.makeText(getContext(), R.string.queryErrorText , Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getContext(), R.string.unknownResponseText , Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             Toast.makeText(getContext(), "Error! " + e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
@@ -137,11 +133,12 @@ public class AddProductAdminFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("name",nameTxt.getText().toString());
-                params.put("description",descriptionTxt.getText().toString());
-                params.put("image_url",imageURLTxt.getText().toString());
-                params.put("price",priceTxt.getText().toString());
-                params.put("brand",brandTxt.getText().toString());
-                params.put("id_category",categoryTxt.getText().toString());
+                params.put("photo",photoTxt.getText().toString());
+                params.put("video",videoTxt.getText().toString());
+                params.put("category_id",categoryTxt.getText().toString());
+                params.put("color",colorTxt.getText().toString());
+                params.put("price",priceText.getText().toString());
+                params.put("age",ageText.getText().toString());
 
                 return params;
             }

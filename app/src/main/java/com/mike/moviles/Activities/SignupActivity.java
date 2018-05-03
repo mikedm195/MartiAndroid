@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.mike.moviles.Activities.Admin.newUser;
 import com.mike.moviles.R;
 
 import org.json.JSONException;
@@ -29,7 +30,7 @@ import static com.mike.moviles.Services.Services.SIGNUP_API;
 public class SignupActivity extends AppCompatActivity {
 
     Button loginBtn, signupBtn;
-    EditText firstnameTxt, lastnameTxt, emailTxt, passwordOneTxt, passwordTwoText, addressTxt, cpTxt, stateTxt;
+    EditText firstnameTxt, lastnameTxt, emailTxt, passwordOneTxt, passwordTwoText, addressTxt, genderText, heightText, weightText;
     ProgressDialog progress_bar;
 
     @Override
@@ -39,16 +40,16 @@ public class SignupActivity extends AppCompatActivity {
         View view = this.getWindow().getDecorView();
         view.setBackgroundResource(R.color.green);
 
-        loginBtn = (Button)findViewById(R.id.loginButtonSignup);
         signupBtn = (Button)findViewById(R.id.signupButton);
         firstnameTxt = (EditText)findViewById(R.id.firstNameTextField);
         lastnameTxt = (EditText)findViewById(R.id.lastNameTextField);
         addressTxt = (EditText)findViewById(R.id.addressTextField);
-        cpTxt = (EditText)findViewById(R.id.cpTextField);
-        stateTxt = (EditText)findViewById(R.id.stateTextField);
         emailTxt = (EditText)findViewById(R.id.emailTextFieldSignup);
         passwordOneTxt = (EditText)findViewById(R.id.passwordOneTextField);
         passwordTwoText = (EditText)findViewById(R.id.passwordTwoTextField);
+        genderText = (EditText)findViewById(R.id.genderTextField);
+        heightText = (EditText)findViewById(R.id.heightTextField);
+        weightText = (EditText)findViewById(R.id.weightTextField);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,22 +86,15 @@ public class SignupActivity extends AppCompatActivity {
                         progress_bar.cancel();
                         try {
                             JSONObject res = new JSONObject(response);
-                            if(res.getString("code").equals("01"))
+                            if(res.getString("user_id").equals("-1"))
                             {
+                                Toast.makeText(SignupActivity.this, R.string.queryErrorText , Toast.LENGTH_SHORT).show();
+
+
+                            } else {
                                 Toast.makeText(SignupActivity.this, R.string.signedupText , Toast.LENGTH_SHORT).show();
                                 Intent actividad = new Intent(SignupActivity.this, LoginActivity.class);
                                 startActivity(actividad);
-                            } else if (res.getString("code").equals("02"))
-                            {
-                                Toast.makeText(SignupActivity.this, R.string.missingValuesText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("03"))
-                            {
-                                Toast.makeText(SignupActivity.this, R.string.userTakenText , Toast.LENGTH_SHORT).show();
-                            } else if (res.getString("code").equals("04"))
-                            {
-                                Toast.makeText(SignupActivity.this, R.string.queryErrorText , Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(SignupActivity.this, R.string.unknownResponseText , Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             Toast.makeText(SignupActivity.this, "Error! " + e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
@@ -123,8 +117,9 @@ public class SignupActivity extends AppCompatActivity {
                 params.put("email",emailTxt.getText().toString());
                 params.put("password",passwordOneTxt.getText().toString());
                 params.put("address",addressTxt.getText().toString());
-                params.put("zip_code",cpTxt.getText().toString());
-                params.put("state",stateTxt.getText().toString());
+                params.put("gender",genderText.getText().toString());
+                params.put("weight",weightText.getText().toString());
+                params.put("height",heightText.getText().toString());
 
                 return params;
             }
